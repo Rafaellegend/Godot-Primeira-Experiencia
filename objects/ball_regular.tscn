@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ubjxv45iqdyb"]
+
+[ext_resource type="PackedScene" uid="uid://baoh81pusaosc" path="res://objects/regular_box.tscn" id="1_jjv44"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_anrcg"]
+bounce = 0.9
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ph61m"]
+radius = 32.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_nvfdh"]
+radius = 32.0
+height = 64.0
+
+[node name="Ball Regular" instance=ExtResource("1_jjv44")]
+physics_material_override = SubResource("PhysicsMaterial_anrcg")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_ph61m")
+
+[node name="Box" parent="CollisionShape2D" index="0"]
+modulate = Color(0.839216, 0.121569, 0.239216, 1)
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.780392, 0.0823529, 0.423529, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D/Box" index="0"]
+position = Vector2(32, 32)
+mesh = SubResource("SphereMesh_nvfdh")

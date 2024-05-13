@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://d7wu74icma0v"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_fvd35"]
+[ext_resource type="PackedScene" uid="uid://baoh81pusaosc" path="res://objects/regular_box.tscn" id="1_hgda4"]
+[ext_resource type="PackedScene" uid="uid://d0nsgw2dd05c1" path="res://objects/box_boucy.tscn" id="2_ddepq"]
+[ext_resource type="PackedScene" uid="uid://ubjxv45iqdyb" path="res://objects/ball_regular.tscn" id="4_4wem1"]
+[ext_resource type="PackedScene" uid="uid://d1ietncasw3hi" path="res://objects/box_ice.tscn" id="5_54rok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqmjs"]
+size = Vector2(1152, 40)
+
+[node name="World" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_fvd35")
+object_templates = Array[PackedScene]([ExtResource("1_hgda4"), ExtResource("2_ddepq"), ExtResource("4_4wem1"), ExtResource("5_54rok")])
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1157.0
+offset_bottom = 651.0
+color = Color(6.85382e-05, 0.573795, 0.974345, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(577, 629)
+shape = SubResource("RectangleShape2D_hqmjs")
+
+[node name="Floor" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -577.0
+offset_top = -20.0
+offset_right = 575.0
+offset_bottom = 20.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(386, -261)
+rotation = -0.342481
+scale = Vector2(0.389221, 0.965242)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(577, 629)
+shape = SubResource("RectangleShape2D_hqmjs")
+
+[node name="Floor" type="ColorRect" parent="StaticBody2D2/CollisionShape2D"]
+offset_left = -577.0
+offset_top = -20.0
+offset_right = 575.0
+offset_bottom = 20.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(380, -242)
+rotation = 0.406134
+scale = Vector2(0.389221, 0.965242)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(577, 629)
+shape = SubResource("RectangleShape2D_hqmjs")
+
+[node name="Floor" type="ColorRect" parent="StaticBody2D3/CollisionShape2D"]
+offset_left = -577.0
+offset_top = -20.0
+offset_right = 575.0
+offset_bottom = 20.0
+
+[node name="Ball Regular" parent="." instance=ExtResource("4_4wem1")]
+position = Vector2(404, 176)
